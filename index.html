@@ -510,6 +510,17 @@
             updateTeamNameDisplay();
             updateLiveScore();
         });
+
+        // Live update scoreboard when localStorage changes (multi-tab and instant update)
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'cybersentinal_teams' || e.key === 'cybersentinal_auth') {
+                if (typeof updateScoreboard === 'function') updateScoreboard();
+            }
+        });
+        // Also update scoreboard every 2 seconds as a fallback
+        setInterval(() => {
+            if (typeof updateScoreboard === 'function') updateScoreboard();
+        }, 2000);
     </script>
 </body>
 </html> 

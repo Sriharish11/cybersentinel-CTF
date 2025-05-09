@@ -3,301 +3,485 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberSentinal CTF - Challenges</title>
+    <title>CTF Challenges</title>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-    <!-- Centered Challenges Heading -->
-    <div class="w-full flex justify-center items-center mt-4 mb-2">
-        <h1 class="text-4xl font-extrabold glitch-text" style="letter-spacing: 0.1em; color: #00ffea; text-shadow: 0 0 8px #00ffea, 2px 2px #ff00ff, -2px -2px #00ffff;">Challenges</h1>
-    </div>
-    <!-- Team Info and Points -->
-    <div class="container mx-auto px-4 py-4">
-        <div class="flex justify-between items-center mb-6">
-            <div class="team-info">
-                <h2 class="text-2xl font-bold text-cyan-400">Team: <span id="team-name" class="text-green-400">CyberHunters</span></h2>
-                <p class="text-xl text-yellow-400">Points: <span id="team-score" class="text-green-400">0</span></p>
-            </div>
-            <button onclick="window.location.href='index.html'" class="cyber-button">Exit to Home</button>
-        </div>
-    </div>
-
-    <!-- Challenge Tabs -->
-    <div class="container mx-auto px-4">
-        <div class="tab-buttons mb-6">
-            <button class="tab-button active" onclick="showTab('easy')">Easy</button>
-            <button class="tab-button" onclick="showTab('medium')">Medium</button>
-            <button class="tab-button" onclick="showTab('hard')">Hard</button>
-        </div>
-
-        <!-- Easy Challenges -->
-        <div id="easy" class="tab-content">
-            <h3 class="text-2xl font-bold text-green-400 mb-4">Easy Challenges</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="challenge-card">
-                    <h4 class="text-xl font-bold text-green-300">Hex Decode (Crypto) - 100 pts</h4>
-                    <p>Decode the hex: 637962656c7b6865785f666c61677d</p>
-                    <details><summary class="hint-button">Hint</summary>Hex to ASCII</details>
-                    <input type="text" id="flag-easy1" placeholder="Enter flag in format: cybel{...}" class="w-full mb-2 px-4 py-2">
-                    <button class="cyber-button w-full" onclick="validateFlag('easy1', 'flag-easy1')">Submit Flag</button>
-                </div>
-                <div class="challenge-card">
-                    <h4 class="text-xl font-bold text-green-300">Page Source (Web) - 100 pts</h4>
-                    <p>Find the flag in the page source.</p>
-                    <details><summary class="hint-button">Hint</summary>View page source</details>
-                    <input type="text" id="flag-easy2" placeholder="Enter flag in format: cybel{...}" class="w-full mb-2 px-4 py-2">
-                    <button class="cyber-button w-full" onclick="validateFlag('easy2', 'flag-easy2')">Submit Flag</button>
-                </div>
-                <div class="challenge-card">
-                    <h4 class="text-xl font-bold text-green-300">Cookie Jar (Web) - 100 pts</h4>
-                    <p>The flag is hidden in your cookies.</p>
-                    <details><summary class="hint-button">Hint</summary>Check browser cookies</details>
-                    <input type="text" id="flag-easy3" placeholder="Enter flag in format: cybel{...}" class="w-full mb-2 px-4 py-2">
-                    <button class="cyber-button w-full" onclick="validateFlag('easy3', 'flag-easy3')">Submit Flag</button>
-                </div>
-                <div class="challenge-card">
-                    <h4 class="text-xl font-bold text-green-300">Reverse String (Reverse) - 100 pts</h4>
-                    <p>Reverse the string: }galf{lebyc</p>
-                    <details><summary class="hint-button">Hint</summary>Reverse the string</details>
-                    <input type="text" id="flag-easy4" placeholder="Enter flag in format: cybel{...}" class="w-full mb-2 px-4 py-2">
-                    <button class="cyber-button w-full" onclick="validateFlag('easy4', 'flag-easy4')">Submit Flag</button>
-                </div>
-                <div class="challenge-card">
-                    <h4 class="text-xl font-bold text-green-300">Base64 Fun (Crypto) - 100 pts</h4>
-                    <p>Decode: Y3liZWx7YmFzZTY0fQ==</p>
-                    <details><summary class="hint-button">Hint</summary>Base64 decode</details>
-                    <input type="text" id="flag-easy5" placeholder="Enter flag in format: cybel{...}" class="w-full mb-2 px-4 py-2">
-                    <button class="cyber-button w-full" onclick="validateFlag('easy5', 'flag-easy5')">Submit Flag</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Medium Challenges -->
-        <div id="medium" class="tab-content hidden">
-            <h3 class="text-2xl font-bold text-yellow-400 mb-4">Medium Challenges</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="challenge-card">
-                    <h4 class="text-xl font-bold text-yellow-300">Caesar Cipher (Crypto) - 200 pts</h4>
-                    <p>Decrypt: fdhvdu_flskhu_lv_ixq</p>
-                    <details><summary class="hint-button">Hint</summary>Caesar shift by 3</details>
-                    <input type="text" id="flag-medium1" placeholder="Enter flag in format: cybel{...}" class="w-full mb-2 px-4 py-2">
-                    <button class="cyber-button w-full" onclick="validateFlag('medium1', 'flag-medium1')">Submit Flag</button>
-                </div>
-                <div class="challenge-card">
-                    <h4 class="text-xl font-bold text-yellow-300">Obfuscated JS (Web) - 200 pts</h4>
-                    <p>The flag is revealed after running obfuscated JavaScript.</p>
-                    <details><summary class="hint-button">Hint</summary>Check the JS console</details>
-                    <input type="text" id="flag-medium2" placeholder="Enter flag in format: cybel{...}" class="w-full mb-2 px-4 py-2">
-                    <button class="cyber-button w-full" onclick="validateFlag('medium2', 'flag-medium2')">Submit Flag</button>
-                </div>
-                <div class="challenge-card">
-                    <h4 class="text-xl font-bold text-yellow-300">XOR Mystery (Crypto) - 200 pts</h4>
-                    <p>XOR the string with key 42.</p>
-                    <details><summary class="hint-button">Hint</summary>XOR each byte</details>
-                    <input type="text" id="flag-medium3" placeholder="Enter flag in format: cybel{...}" class="w-full mb-2 px-4 py-2">
-                    <button class="cyber-button w-full" onclick="validateFlag('medium3', 'flag-medium3')">Submit Flag</button>
-                </div>
-                <div class="challenge-card">
-                    <h4 class="text-xl font-bold text-yellow-300">Reverse Logic (Reverse) - 200 pts</h4>
-                    <p>Analyze the provided Python bytecode.</p>
-                    <details><summary class="hint-button">Hint</summary>Use an online decompiler</details>
-                    <input type="text" id="flag-medium4" placeholder="Enter flag in format: cybel{...}" class="w-full mb-2 px-4 py-2">
-                    <button class="cyber-button w-full" onclick="validateFlag('medium4', 'flag-medium4')">Submit Flag</button>
-                </div>
-                <div class="challenge-card">
-                    <h4 class="text-xl font-bold text-yellow-300">Binary Reversal (Reverse) - 200 pts</h4>
-                    <p>Reverse engineer the binary to find the flag.</p>
-                    <details><summary class="hint-button">Hint</summary>Use Ghidra or IDA</details>
-                    <input type="text" id="flag-medium5" placeholder="Enter flag in format: cybel{...}" class="w-full mb-2 px-4 py-2">
-                    <button class="cyber-button w-full" onclick="validateFlag('medium5', 'flag-medium5')">Submit Flag</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Hard Challenges -->
-        <div id="hard" class="tab-content hidden">
-            <h3 class="text-2xl font-bold text-pink-400 mb-4">Hard Challenges</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="challenge-card">
-                    <h4 class="text-xl font-bold text-pink-300">SQL Injection (Web) - 300 pts</h4>
-                    <p>Bypass the login form using SQL injection.</p>
-                    <details><summary class="hint-button">Hint</summary>Try common payloads</details>
-                    <input type="text" id="flag-hard1" placeholder="Enter flag in format: cybel{...}" class="w-full mb-2 px-4 py-2">
-                    <button class="cyber-button w-full" onclick="validateFlag('hard1', 'flag-hard1')">Submit Flag</button>
-                </div>
-                <div class="challenge-card">
-                    <h4 class="text-xl font-bold text-pink-300">RSA Challenge (Crypto) - 300 pts</h4>
-                    <p>Crack the RSA-encrypted flag.</p>
-                    <details><summary class="hint-button">Hint</summary>Factor the modulus</details>
-                    <input type="text" id="flag-hard2" placeholder="Enter flag in format: cybel{...}" class="w-full mb-2 px-4 py-2">
-                    <button class="cyber-button w-full" onclick="validateFlag('hard2', 'flag-hard2')">Submit Flag</button>
-                </div>
-                <div class="challenge-card">
-                    <h4 class="text-xl font-bold text-pink-300">Header Hunter (Web) - 300 pts</h4>
-                    <p>Find the flag in a custom HTTP header.</p>
-                    <details><summary class="hint-button">Hint</summary>Use curl or Burp Suite</details>
-                    <input type="text" id="flag-hard3" placeholder="Enter flag in format: cybel{...}" class="w-full mb-2 px-4 py-2">
-                    <button class="cyber-button w-full" onclick="validateFlag('hard3', 'flag-hard3')">Submit Flag</button>
-                </div>
-                <div class="challenge-card">
-                    <h4 class="text-xl font-bold text-pink-300">Reverse Bomb (Reverse) - 300 pts</h4>
-                    <p>Disarm the binary bomb to get the flag.</p>
-                    <details><summary class="hint-button">Hint</summary>Use a debugger</details>
-                    <input type="text" id="flag-hard4" placeholder="Enter flag in format: cybel{...}" class="w-full mb-2 px-4 py-2">
-                    <button class="cyber-button w-full" onclick="validateFlag('hard4', 'flag-hard4')">Submit Flag</button>
-                </div>
-                <div class="challenge-card">
-                    <h4 class="text-xl font-bold text-pink-300">Shell Game (Reverse) - 300 pts</h4>
-                    <p>Analyze the provided shell script for the flag.</p>
-                    <details><summary class="hint-button">Hint</summary>Read the script carefully</details>
-                    <input type="text" id="flag-hard5" placeholder="Enter flag in format: cybel{...}" class="w-full mb-2 px-4 py-2">
-                    <button class="cyber-button w-full" onclick="validateFlag('hard5', 'flag-hard5')">Submit Flag</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <style>
         body {
             font-family: 'Share Tech Mono', monospace;
-            background-color: #0a0a0a;
-            color: #00ff00;
-            background-image: 
-                linear-gradient(rgba(0, 255, 0, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 0, 0.05) 1px, transparent 1px);
-            background-size: 20px 20px;
+            background: linear-gradient(135deg, #000 80%, #2a0000 100%);
+            color: #fff;
+            position: relative;
         }
-        .glitch-text {
-            text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff;
-            animation: glitch 1s infinite;
+        /* Animated warning stripes */
+        .warning-stripes {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                135deg,
+                rgba(255,0,0,0.12) 0px,
+                rgba(255,0,0,0.12) 16px,
+                transparent 16px,
+                transparent 32px
+            );
+            animation: stripes-move 2s linear infinite;
         }
-        @keyframes glitch {
-            0% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
-            25% { text-shadow: -2px 2px #ff00ff, 2px -2px #00ffff; }
-            50% { text-shadow: 2px -2px #ff00ff, -2px 2px #00ffff; }
-            75% { text-shadow: -2px -2px #ff00ff, 2px 2px #00ffff; }
-            100% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
+        @keyframes stripes-move {
+            0% { background-position: 0 0; }
+            100% { background-position: 64px 64px; }
         }
-        .cyber-button {
-            background: linear-gradient(45deg, #00ff00, #00ffff);
-            color: #000;
+        .alert-banner {
+            width: 100%;
+            background: linear-gradient(90deg, #ff0000 60%, #ff9900 100%);
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            letter-spacing: 0.2em;
+            padding: 0.7em 0;
+            text-shadow: 0 0 12px #ff0000, 0 0 24px #ff9900;
+            animation: alert-pulse 1.2s infinite alternate;
+            margin-bottom: 18px;
+        }
+        @keyframes alert-pulse {
+            0% { box-shadow: 0 0 16px #ff0000, 0 0 32px #ff9900; }
+            100% { box-shadow: 0 0 32px #ff0000, 0 0 64px #ff9900; }
+        }
+        .header {
+            background: rgba(40, 0, 0, 0.92);
+            color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 2px solid #ff0000;
+            border-radius: 12px;
+            box-shadow: 0 0 24px #ff0000, 0 0 40px #ff9900 inset;
+            text-shadow: 0 0 8px #ff0000;
+        }
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        .tab {
+            padding: 12px 32px;
+            background: #1a0000;
+            color: #fff;
+            border: 2px solid #ff0000;
+            border-radius: 999px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 10px #ff0000;
+            transition: all 0.3s;
+            text-shadow: 0 0 8px #ff0000;
+        }
+        .tab:hover, .tab.active {
+            background: linear-gradient(90deg, #ff0000, #ff9900);
+            color: #fff;
+            box-shadow: 0 0 20px #ff0000, 0 0 40px #ff9900 inset;
+        }
+        .challenges {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+        }
+        .challenge {
+            background: rgba(40, 0, 0, 0.97);
+            padding: 24px;
+            border-radius: 16px;
+            border: 2px solid #ff0000;
+            box-shadow: 0 0 24px #ff0000, 0 0 40px #ff9900 inset;
+            transition: all 0.3s;
+        }
+        .challenge:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 0 32px #ff0000, 0 0 60px #ff9900 inset;
+        }
+        .category {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(255, 0, 0, 0.15);
+            border: 1.5px solid #ff0000;
+            border-radius: 999px;
+            font-size: 1em;
+            margin-bottom: 12px;
+            color: #ff9900;
+            text-shadow: 0 0 6px #ff9900;
+        }
+        .category[data-type="Web"] { color: #fff; border-color: #fff; }
+        .category[data-type="Reverse"] { color: #ff0000; border-color: #ff0000; }
+        .hint {
+            margin: 12px 0;
+            padding: 12px;
+            background: rgba(255, 0, 0, 0.08);
+            border: 1.5px solid #ff0000;
+            border-radius: 6px;
+            color: #ff9900;
+            text-shadow: 0 0 6px #ff9900;
+        }
+        .flag-input {
+            width: 100%;
+            padding: 10px;
+            margin: 12px 0;
+            background: #1a0000;
+            border: 2px solid #ff0000;
+            border-radius: 6px;
+            color: #fff;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.1em;
+            text-shadow: 0 0 6px #ff0000;
+        }
+        .flag-input:focus {
+            outline: none;
+            box-shadow: 0 0 16px #ff0000;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #ff0000, #ff9900);
+            color: #fff;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 999px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 16px #ff0000;
+            transition: all 0.3s;
+            text-shadow: 0 0 8px #ff0000;
+        }
+        .submit-btn:hover {
+            background: linear-gradient(90deg, #ff9900, #ff0000);
+            color: #fff;
+            box-shadow: 0 0 32px #ff9900;
+        }
+        .challenge h3 {
+            font-size: 1.3em;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            color: #fff;
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 8px #ff0000, 0 0 2px #fff;
         }
-        .cyber-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px #00ff00;
-        }
-        .tab-button {
-            background: #1a1a1a;
-            color: #00ff00;
-            border: 1px solid #00ff00;
-            padding: 10px 20px;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .tab-button:hover {
-            background: #00ff00;
-            color: #000;
-        }
-        .tab-button.active {
-            background: #00ff00;
-            color: #000;
-        }
-        .challenge-card {
-            border: 1px solid #00ff00;
-            background: rgba(26, 26, 26, 0.9);
-            border-radius: 5px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            transition: all 0.3s ease;
-        }
-        .challenge-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
-        }
-        .hint-button {
-            background: transparent;
-            border: 1px solid #00ffff;
-            color: #00ffff;
-            padding: 0.25rem 0.5rem;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .hint-button:hover {
-            background: #00ffff;
-            color: #0a0a0a;
-        }
-        .hint-content {
-            display: none;
-            margin-top: 0.5rem;
-            padding: 0.5rem;
-            background: rgba(0, 255, 255, 0.1);
-            border: 1px solid #00ffff;
-            border-radius: 4px;
-        }
-        input[type="text"] {
-            background: #1a1a1a;
-            border: 1px solid #00ff00;
-            color: #00ff00;
-            padding: 10px;
-            margin: 5px 0;
-            width: 100%;
+        .solved-indicator {
+            display: flex;
+            align-items: center;
+            background: rgba(255,0,0,0.12);
+            border: 2px solid #fff;
+            color: #fff;
+            border-radius: 999px;
+            padding: 10px 18px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            box-shadow: 0 0 10px #ff0000;
             font-family: 'Share Tech Mono', monospace;
-            border-radius: 4px;
-            transition: all 0.3s ease;
+            animation: pulse-red 1.2s infinite alternate;
         }
-        input[type="text"]:focus {
-            outline: none;
-            box-shadow: 0 0 10px #00ff00;
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 10px #ff0000; }
+            100% { box-shadow: 0 0 24px #ff0000; }
         }
-        .hidden { display: none !important; }
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            color: #fff;
+            display: none;
+            font-family: 'Share Tech Mono', monospace;
+            border: 2px solid #ff0000;
+            background: rgba(255, 0, 0, 0.12);
+            box-shadow: 0 0 16px #ff0000;
+            text-shadow: 0 0 8px #ff0000;
+            z-index: 200;
+        }
+        .notification.error {
+            color: #fff;
+            border-color: #fff;
+            background: rgba(255, 0, 0, 0.32);
+            box-shadow: 0 0 16px #fff;
+        }
+        @keyframes pulse-red-exit {
+            0% { box-shadow: 0 0 10px #ff0000, 0 0 24px #ff9900 inset; }
+            100% { box-shadow: 0 0 32px #ff0000, 0 0 64px #ff9900 inset; }
+        }
     </style>
+</head>
+<body>
+    <div class="warning-stripes"></div>
+    <div class="alert-banner">!!! ALERT: RED TEAM OPERATIONS IN PROGRESS !!!</div>
+    <div class="matrix-bg"></div>
+    <div class="header">
+        <h1>Team: <span id="team-name">Loading...</span></h1>
+        <button id="exitBtn" onclick="window.location.href='index.html'" style="position: fixed; top: 32px; right: 32px; z-index: 100; padding: 12px 32px; font-size: 1.25rem; font-family: 'Share Tech Mono', monospace; font-weight: bold; background: linear-gradient(90deg, #ff0000, #ff9900); color: #fff; border: 3px solid #fff; border-radius: 16px; box-shadow: 0 0 24px #ff0000, 0 0 40px #ff9900 inset; text-transform: uppercase; letter-spacing: 2px; transition: all 0.2s; animation: pulse-red-exit 1.2s infinite alternate;">EXIT</button>
+        <p>Score: <span id="team-score">0</span></p>
+    </div>
+
+    <div class="tabs">
+        <button class="tab active" onclick="showTab('easy')">Easy</button>
+        <button class="tab" onclick="showTab('medium')">Medium</button>
+        <button class="tab" onclick="showTab('hard')">Hard</button>
+    </div>
+
+    <div id="easy" class="challenges">
+        <!-- Easy Challenges -->
+        <div class="challenge">
+            <span class="category">Crypto</span>
+            <h3>Hex Decode</h3>
+            <p>Decode the hex: 637962656c7b6865785f666c61677d</p>
+            <div class="hint">
+                <strong>Hint:</strong> Convert hex to ASCII
+            </div>
+            <input type="text" id="flag-easy1" class="flag-input" placeholder="cybel{...}">
+            <div id="solved-easy1" class="solved-indicator" style="display:none;"><input type='checkbox' checked disabled style='accent-color:#00ff00;margin-right:8px;'>Solved</div>
+            <button onclick="validateFlag('easy1', 'flag-easy1')" class="submit-btn">Submit</button>
+        </div>
+
+        <div class="challenge">
+            <span class="category">Crypto</span>
+            <h3>Base64 Fun</h3>
+            <p>Decode: Y3liZWx7YmFzZTY0fQ==</p>
+            <div class="hint">
+                <strong>Hint:</strong> Use base64 decoding
+            </div>
+            <input type="text" id="flag-easy2" class="flag-input" placeholder="cybel{...}">
+            <div id="solved-easy2" class="solved-indicator" style="display:none;"><input type='checkbox' checked disabled style='accent-color:#00ff00;margin-right:8px;'>Solved</div>
+            <button onclick="validateFlag('easy2', 'flag-easy2')" class="submit-btn">Submit</button>
+        </div>
+
+        <div class="challenge">
+            <span class="category">Web</span>
+            <h3>Page Source</h3>
+            <p>Find the flag in the page source</p>
+            <div class="hint">
+                <strong>Hint:</strong> Right-click and view page source
+            </div>
+            <input type="text" id="flag-easy3" class="flag-input" placeholder="cybel{...}">
+            <div id="solved-easy3" class="solved-indicator" style="display:none;"><input type='checkbox' checked disabled style='accent-color:#00ff00;margin-right:8px;'>Solved</div>
+            <button onclick="validateFlag('easy3', 'flag-easy3')" class="submit-btn">Submit</button>
+        </div>
+
+        <div class="challenge">
+            <span class="category">Web</span>
+            <h3>Cookie Jar</h3>
+            <p>The flag is hidden in your cookies</p>
+            <div class="hint">
+                <strong>Hint:</strong> Check browser cookies
+            </div>
+            <input type="text" id="flag-easy4" class="flag-input" placeholder="cybel{...}">
+            <div id="solved-easy4" class="solved-indicator" style="display:none;"><input type='checkbox' checked disabled style='accent-color:#00ff00;margin-right:8px;'>Solved</div>
+            <button onclick="validateFlag('easy4', 'flag-easy4')" class="submit-btn">Submit</button>
+        </div>
+
+        <div class="challenge">
+            <span class="category">Reverse</span>
+            <h3>Reverse String</h3>
+            <p>Reverse the string: }galf{lebyc</p>
+            <div class="hint">
+                <strong>Hint:</strong> Read it backwards
+            </div>
+            <input type="text" id="flag-easy5" class="flag-input" placeholder="cybel{...}">
+            <div id="solved-easy5" class="solved-indicator" style="display:none;"><input type='checkbox' checked disabled style='accent-color:#00ff00;margin-right:8px;'>Solved</div>
+            <button onclick="validateFlag('easy5', 'flag-easy5')" class="submit-btn">Submit</button>
+        </div>
+    </div>
+
+    <div id="medium" class="challenges" style="display: none;">
+        <!-- Medium Challenges -->
+        <div class="challenge">
+            <span class="category">Crypto</span>
+            <h3>Caesar Cipher</h3>
+            <p>Decrypt: fdhvdu_flskhu_lv_ixq</p>
+            <div class="hint">
+                <strong>Hint:</strong> Shift by 3
+            </div>
+            <input type="text" id="flag-medium1" class="flag-input" placeholder="cybel{...}">
+            <div id="solved-medium1" class="solved-indicator" style="display:none;"><input type='checkbox' checked disabled style='accent-color:#00ff00;margin-right:8px;'>Solved</div>
+            <button onclick="validateFlag('medium1', 'flag-medium1')" class="submit-btn">Submit</button>
+        </div>
+
+        <div class="challenge">
+            <span class="category">Crypto</span>
+            <h3>XOR Mystery</h3>
+            <p>XOR the string with key 42</p>
+            <div class="hint">
+                <strong>Hint:</strong> XOR each byte
+            </div>
+            <input type="text" id="flag-medium2" class="flag-input" placeholder="cybel{...}">
+            <div id="solved-medium2" class="solved-indicator" style="display:none;"><input type='checkbox' checked disabled style='accent-color:#00ff00;margin-right:8px;'>Solved</div>
+            <button onclick="validateFlag('medium2', 'flag-medium2')" class="submit-btn">Submit</button>
+        </div>
+
+        <div class="challenge">
+            <span class="category">Reverse</span>
+            <h3>Binary Reversal</h3>
+            <p>Reverse engineer the binary</p>
+            <div class="hint">
+                <strong>Hint:</strong> Use Ghidra or IDA
+            </div>
+            <input type="text" id="flag-medium3" class="flag-input" placeholder="cybel{...}">
+            <div id="solved-medium3" class="solved-indicator" style="display:none;"><input type='checkbox' checked disabled style='accent-color:#00ff00;margin-right:8px;'>Solved</div>
+            <button onclick="validateFlag('medium3', 'flag-medium3')" class="submit-btn">Submit</button>
+        </div>
+
+        <div class="challenge">
+            <span class="category">Reverse</span>
+            <h3>Python Bytecode</h3>
+            <p>Analyze the Python bytecode</p>
+            <div class="hint">
+                <strong>Hint:</strong> Use an online decompiler
+            </div>
+            <input type="text" id="flag-medium4" class="flag-input" placeholder="cybel{...}">
+            <div id="solved-medium4" class="solved-indicator" style="display:none;"><input type='checkbox' checked disabled style='accent-color:#00ff00;margin-right:8px;'>Solved</div>
+            <button onclick="validateFlag('medium4', 'flag-medium4')" class="submit-btn">Submit</button>
+        </div>
+
+        <div class="challenge">
+            <span class="category">Web</span>
+            <h3>Obfuscated JS</h3>
+            <p>Find the flag in obfuscated JavaScript</p>
+            <div class="hint">
+                <strong>Hint:</strong> Check the console
+            </div>
+            <input type="text" id="flag-medium5" class="flag-input" placeholder="cybel{...}">
+            <div id="solved-medium5" class="solved-indicator" style="display:none;"><input type='checkbox' checked disabled style='accent-color:#00ff00;margin-right:8px;'>Solved</div>
+            <button onclick="validateFlag('medium5', 'flag-medium5')" class="submit-btn">Submit</button>
+        </div>
+    </div>
+
+    <div id="hard" class="challenges" style="display: none;">
+        <!-- Hard Challenges -->
+        <div class="challenge">
+            <span class="category">Reverse</span>
+            <h3>Binary Bomb</h3>
+            <p>Disarm the binary bomb</p>
+            <div class="hint">
+                <strong>Hint:</strong> Use a debugger
+            </div>
+            <input type="text" id="flag-hard1" class="flag-input" placeholder="cybel{...}">
+            <div id="solved-hard1" class="solved-indicator" style="display:none;"><input type='checkbox' checked disabled style='accent-color:#00ff00;margin-right:8px;'>Solved</div>
+            <button onclick="validateFlag('hard1', 'flag-hard1')" class="submit-btn">Submit</button>
+        </div>
+
+        <div class="challenge">
+            <span class="category">Reverse</span>
+            <h3>Shell Game</h3>
+            <p>Analyze the shell script</p>
+            <div class="hint">
+                <strong>Hint:</strong> Read the script carefully
+            </div>
+            <input type="text" id="flag-hard2" class="flag-input" placeholder="cybel{...}">
+            <div id="solved-hard2" class="solved-indicator" style="display:none;"><input type='checkbox' checked disabled style='accent-color:#00ff00;margin-right:8px;'>Solved</div>
+            <button onclick="validateFlag('hard2', 'flag-hard2')" class="submit-btn">Submit</button>
+        </div>
+
+        <div class="challenge">
+            <span class="category">Web</span>
+            <h3>SQL Injection</h3>
+            <p>Bypass the login form</p>
+            <div class="hint">
+                <strong>Hint:</strong> Try common payloads
+            </div>
+            <input type="text" id="flag-hard3" class="flag-input" placeholder="cybel{...}">
+            <div id="solved-hard3" class="solved-indicator" style="display:none;"><input type='checkbox' checked disabled style='accent-color:#00ff00;margin-right:8px;'>Solved</div>
+            <button onclick="validateFlag('hard3', 'flag-hard3')" class="submit-btn">Submit</button>
+        </div>
+
+        <div class="challenge">
+            <span class="category">Web</span>
+            <h3>Header Hunter</h3>
+            <p>Find the flag in HTTP headers</p>
+            <div class="hint">
+                <strong>Hint:</strong> Use curl or Burp Suite
+            </div>
+            <input type="text" id="flag-hard4" class="flag-input" placeholder="cybel{...}">
+            <div id="solved-hard4" class="solved-indicator" style="display:none;"><input type='checkbox' checked disabled style='accent-color:#00ff00;margin-right:8px;'>Solved</div>
+            <button onclick="validateFlag('hard4', 'flag-hard4')" class="submit-btn">Submit</button>
+        </div>
+
+        <div class="challenge">
+            <span class="category">Crypto</span>
+            <h3>RSA Challenge</h3>
+            <p>Crack the RSA-encrypted flag</p>
+            <div class="hint">
+                <strong>Hint:</strong> Factor the modulus
+            </div>
+            <input type="text" id="flag-hard5" class="flag-input" placeholder="cybel{...}">
+            <div id="solved-hard5" class="solved-indicator" style="display:none;"><input type='checkbox' checked disabled style='accent-color:#00ff00;margin-right:8px;'>Solved</div>
+            <button onclick="validateFlag('hard5', 'flag-hard5')" class="submit-btn">Submit</button>
+        </div>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
     <script src="js/flag-validator.js"></script>
     <script>
         function showTab(tabName) {
-            // Hide all tab contents
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.add('hidden');
+            // Hide all challenge sections
+            document.querySelectorAll('.challenges').forEach(section => {
+                section.style.display = 'none';
             });
             
-            // Remove active class from all tab buttons
-            document.querySelectorAll('.tab-button').forEach(button => {
-                button.classList.remove('active');
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
             });
             
-            // Show selected tab content
-            document.getElementById(tabName).classList.remove('hidden');
-            
-            // Add active class to selected tab button
-            document.querySelector(`.tab-button[onclick="showTab('${tabName}')"]`).classList.add('active');
+            // Show selected section and activate tab
+            document.getElementById(tabName).style.display = 'grid';
+            document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add('active');
         }
 
-        // Dynamic team name and score from localStorage (same as index.html)
-        function updateTeamInfoFromAuth() {
-            const auth = JSON.parse(localStorage.getItem('cybersentinal_auth'));
-            if (auth && auth.name) {
-                document.getElementById('team-name').textContent = auth.name;
-                document.getElementById('team-score').textContent = auth.score;
-            } else {
-                document.getElementById('team-name').textContent = 'Unknown Team';
-                document.getElementById('team-score').textContent = '0';
+        function updateTeamInfo() {
+            const auth = JSON.parse(localStorage.getItem('cybersentinal_auth')) || {};
+            document.getElementById('team-name').textContent = auth.name || 'Unknown Team';
+            document.getElementById('team-score').textContent = auth.score || 0;
+            
+            // Mark solved challenges
+            if (auth.solvedChallenges) {
+                auth.solvedChallenges.forEach(challengeId => {
+                    const input = document.getElementById(`flag-${challengeId}`);
+                    if (input) {
+                        input.disabled = true;
+                        input.value = '';
+                        input.style.backgroundColor = '#f0f0f0';
+                    }
+                });
             }
         }
+
         // Initial update
-        updateTeamInfoFromAuth();
-        // Live update every second
-        setInterval(updateTeamInfoFromAuth, 1000);
+        updateTeamInfo();
+        // Update every second
+        setInterval(updateTeamInfo, 1000);
+
+        // Play beep sound on correct flag
+        function playBeep() {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const o = ctx.createOscillator();
+            const g = ctx.createGain();
+            o.type = 'square';
+            o.frequency.value = 880;
+            g.gain.value = 0.1;
+            o.connect(g); g.connect(ctx.destination);
+            o.start();
+            setTimeout(() => { o.stop(); ctx.close(); }, 120);
+        }
+        // Patch validateFlag to play beep on correct
+        const origValidateFlag = window.validateFlag;
+        window.validateFlag = function(...args) {
+            const result = origValidateFlag.apply(this, args);
+            // If solved indicator is shown, play beep
+            setTimeout(() => {
+                const solvedDiv = document.getElementById('solved-' + args[0]);
+                if (solvedDiv && solvedDiv.style.display !== 'none') playBeep();
+            }, 100);
+            return result;
+        }
     </script>
 </body>
 </html> 

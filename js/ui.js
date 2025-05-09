@@ -15,27 +15,37 @@ function showSection(sectionId) {
 }
 
 function updateScoreboard() {
-    const teams = JSON.parse(localStorage.getItem('cybersentinal_teams'));
+    const teams = JSON.parse(localStorage.getItem('cybersentinal_teams')) || [];
     if (!teams) return;
 
     // Sort teams by score (descending)
     teams.sort((a, b) => b.score - a.score);
 
-    const scoreboardList = document.getElementById('scoreboardList');
-    scoreboardList.innerHTML = '';
+    const scoreboardBody = document.getElementById('scoreboardBody');
+    if (!scoreboardBody) return;
+
+    scoreboardBody.innerHTML = '';
 
     teams.forEach((team, index) => {
-        const teamElement = document.createElement('div');
-        teamElement.className = 'flex justify-between items-center p-4 bg-gray-800 rounded-lg';
-        teamElement.innerHTML = `
-            <div class="flex items-center">
-                <span class="text-2xl font-bold mr-4">#${index + 1}</span>
-                <span class="text-xl">${team.name}</span>
-            </div>
-            <span class="text-xl font-bold">${team.score} pts</span>
+        const row = document.createElement('tr');
+        row.className = 'border-b border-gray-700';
+        row.innerHTML = `
+            <td class="p-4">${index + 1}</td>
+            <td class="p-4">${team.name}</td>
+            <td class="p-4">${team.score || 0}</td>
+            <td class="p-4">${team.solvedChallenges ? team.solvedChallenges.length : 0}</td>
         `;
-        scoreboardList.appendChild(teamElement);
+        scoreboardBody.appendChild(row);
     });
+
+    // Also update the team score in the navigation if it exists
+    const teamScore = document.getElementById('teamScore');
+    if (teamScore) {
+        const currentTeam = JSON.parse(localStorage.getItem('cybersentinal_auth'));
+        if (currentTeam) {
+            teamScore.textContent = currentTeam.score || 0;
+        }
+    }
 }
 
 // Add glitch effect to challenge titles
